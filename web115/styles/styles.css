@@ -1,8 +1,17 @@
+:root {
+  --mint: #A8E6CF;
+  --taupe: #6B5B4D;
+  --cream: #FAFAF7;
+  --charcoal: #2F2F2F;
+  --card: #ffffff;
+  --border: #d9d3c7;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f2efe9;
-  color: #1f1f1f;
+  background: var(--cream);
+  color: var(--taupe);
   line-height: 1.6;
 }
 
@@ -13,14 +22,16 @@ header, main, footer {
 }
 
 header {
-  background: #dbe7e4;
-  border-bottom: 2px solid #b8c9c4;
+  background: var(--mint);
+  border-bottom: 3px solid var(--charcoal);
+  border-radius: 0 0 12px 12px;
 }
 
 footer {
-  background: #dbe7e4;
-  border-top: 2px solid #b8c9c4;
+  background: var(--mint);
+  border-top: 3px solid var(--charcoal);
   margin-top: 24px;
+  border-radius: 12px 12px 0 0;
 }
 
 nav a {
@@ -37,3 +48,61 @@ img {
 height: auto;
 border-radius: 10px;
 }
+
+/* ========== BRAND PAGE ONLY (brand.html) ========== */
+.brand-page .brand-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--charcoal);
+  margin: 0;
+}
+
+.brand-page .brand-tagline {
+  margin: 6px 0 0;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.brand-page .card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.brand-page .tagline-display {
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--charcoal);
+  border-left: 6px solid var(--mint);
+  padding: 10px 12px;
+  background: #f1fffd;
+  border-radius: 10px;
+}
+
+.brand-page .swatch-box {
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.brand-page .grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 700px) {
+  .brand-page .grid-2 {
+  grid-template-columns: 1fr;
+}
+}
+
+.brand-page .color-mint { background: var(--mint); }
+.brand-page .color-taupe { background: var(--taupe); }
+.brand-page .color-cream { background: var(--cream); }
+.brand-page .color-charcoal { background: var(--charcoal); }
