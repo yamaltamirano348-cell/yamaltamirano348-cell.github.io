@@ -112,10 +112,11 @@ gap: 14px;
 }
 
 @media (max-width: 700px) {
-.brand-page .grid-2 {
-grid-template-columns: 1fr;
+    .brand-page .grid-2 {
+    grid-template-columns: 1fr;
+  }
 }
-}
+
 
 /* Color swatches */
 .brand-page .swatch {
