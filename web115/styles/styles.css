@@ -1,4 +1,4 @@
-/* ========================= BASE SITE STYLES ========================= */
+/* =========================BASE SITE STYLES========================= */
 
 body {
 margin: 0;
@@ -28,6 +28,7 @@ margin-top: 24px;
 nav a {
 text-decoration: none;
 font-weight: 700;
+color: #1f1f1f;
 }
 
 nav a:hover {
@@ -40,135 +41,68 @@ height: auto;
 border-radius: 10px;
 }
 
-/* ========================= BRAND PAGE ONLY (brand.html) ========================= */
+/* =========================BRAND PAGE ONLY========================= */
 
-.brand-page {
+.brand-page main {
+max-width: 900px;
+margin: 0 auto;
+padding: 16px;
 background: #FAFAF7;
 color: #6B5B4D;
 }
 
-/* Full-width banner */
-.brand-page .site-banner {
-background: #A8E6CF;
-border-bottom: 3px solid #2F2F2F;
-max-width: none;
-margin: 0;
-padding: 0;
-}
-
-.brand-page .banner-inner {
-max-width: 900px;
-margin: 0 auto;
-padding: 16px;
-}
-
-.brand-page .brand-name {
-margin: 0;
-font-size: 1.8rem;
-font-weight: 800;
-color: #2F2F2F;
-}
-
-.brand-page .brand-tagline {
-margin: 6px 0 0;
-font-style: italic;
-font-weight: 700;
-color: #2F2F2F;
-}
-
-/* Main wrapper */
-.brand-page .wrap {
-max-width: 900px;
-margin: 0 auto;
-padding: 16px;
-}
-
-/* Card sections */
-.brand-page .card {
-background: #ffffff;
-border: 1px solid #d9d3c7;
-border-radius: 12px;
-padding: 16px;
-margin: 16px 0;
-}
-
-/* Tagline highlight */
-.brand-page .tagline-display {
-font-size: 1.25rem;
-font-weight: 800;
-font-style: italic;
-color: #2F2F2F;
-border-left: 6px solid #A8E6CF;
-padding: 10px 12px;
-background: #f1fffd;
-border-radius: 10px;
-}
-
-/* Two-column grid */
-.brand-page .grid-2 {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 14px;
-}
-
-@media (max-width: 700px) {
-    .brand-page .grid-2 {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* Color swatches */
-.brand-page .swatch {
-border: 1px dashed #d9d3c7;
-border-radius: 10px;
-padding: 12px;
-}
-
-.brand-page .swatch-box {
-height: 60px;
-border-radius: 10px;
-border: 1px solid #d9d3c7;
+.brand-page h2 {
+margin-top: 24px;
 margin-bottom: 8px;
-}
-
-.brand-page .color-1 { background: #A8E6CF; }
-.brand-page .color-2 { background: #6B5B4D; }
-.brand-page .color-3 { background: #FAFAF7; }
-.brand-page .color-4 { background: #2F2F2F; }
-
-/* Font samples */
-.brand-page .font-sample {
-border: 1px dashed #d9d3c7;
-border-radius: 10px;
-padding: 12px;
-}
-
-.brand-page .sample {
-margin-top: 10px;
-padding: 10px;
-border-radius: 10px;
-border: 1px solid #d9d3c7;
-background: #FBFCFE;
-}
-
-.brand-page .heading-sample {
-font-family: "Trebuchet MS", Arial, sans-serif;
-font-weight: 800;
 color: #2F2F2F;
 }
 
-.brand-page .body-sample {
-font-family: Arial, Helvetica, sans-serif;
+.brand-page p {
+margin-bottom: 12px;
 }
 
-/* Footer */
-.brand-page .site-footer {
-border-top: 1px solid #d9d3c7;
-margin-top: 18px;
-padding-top: 10px;
+.brand-page .tagline {
+font-style: italic;
+font-weight: bold;
+color: #2F2F2F;
 }
 
-.brand-page .footer-small {
-margin-top: 4px;
+/* =========================
+COLOR LIST (SMALL SQUARES)
+========================= */
+
+.color-list {
+list-style: none;
+padding-left: 0;
+margin: 0;
+}
+
+.color-list li {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.color-dot {
+width: 14px;
+height: 14px;
+border-radius: 4px;
+margin-right: 10px;
+border: 1px solid #ccc;
+}
+
+.color-dot.mint {
+background: #A8E6CF;
+}
+
+.color-dot.taupe {
+background: #6B5B4D;
+}
+
+.color-dot.cream {
+background: #FAFAF7;
+}
+
+.color-dot.charcoal {
+background: #2F2F2F;
 }
