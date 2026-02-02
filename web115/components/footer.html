@@ -14,3 +14,19 @@
 
 <p>Page built by Imaginary Design Co.</p>
 </footer>
+
+<script>
+window.addEventListener("load", function () {
+const htmlLink = document.getElementById("validation-link-html");
+const cssLink = document.getElementById("validation-link-css");
+const pageURL = encodeURIComponent(window.location.href);
+
+if (htmlLink) {
+htmlLink.href = "https://validator.w3.org/nu/?doc=" + pageURL;
+}
+
+if (cssLink) {
+cssLink.href = "https://jigsaw.w3.org/css-validator/validator?uri=" + pageURL;
+}
+});
+</script>
