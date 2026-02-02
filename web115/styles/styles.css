@@ -1,7 +1,10 @@
 /* =========================BASE SITE STYLES========================= */
 
-* {
+html {
   box-sizing: border-box;
+}
+body {
+  box-sizing: inherit;
 }
 
 body {
@@ -55,7 +58,7 @@ background: #FAFAF7;
 color: #6B5B4D;
 }
 
-.brand-page h2 {
+.brand-h2 {
 margin-top: 24px;
 margin-bottom: 8px;
 color: #2F2F2F;
@@ -92,7 +95,8 @@ width: 14px;
 height: 14px;
 border-radius: 4px;
 margin-right: 10px;
-border: 1px solid #ccc;
+outline: 1px solid #ccc;    /* <- use outline */
+display: inline-block;
 }
 
 .color-dot.mint {
