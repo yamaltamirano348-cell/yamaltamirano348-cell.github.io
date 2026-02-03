@@ -1,6 +1,6 @@
-// =========================
-// FizzBuzz 1 
-// =========================
+// ========================
+// FizzBuzz 1
+// ========================
 
 // ----- SETTINGS -----
 const START = 1;
@@ -44,20 +44,24 @@ outputHTML += "<ol>";
 for (let i = START; i <= END; i++) {
 let message = "";
 
+// Multiple of 3
 if (i % NUM_A === 0) {
 message += WORD_A;
 }
 
+// Multiple of 5
 if (i % NUM_B === 0) {
 if (message !== "") message += " ";
 message += WORD_B;
 }
 
+// Default
 if (message === "") {
 message = WORD_DEFAULT;
 }
 
-outputHTML += `<li>${message}</li>`;
+// Include the number in each line
+outputHTML += `<li>${i}. ${message}</li>`;
 }
 
 outputHTML += "</ol>";
