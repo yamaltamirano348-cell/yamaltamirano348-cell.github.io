@@ -2,139 +2,32 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yamilet Altamirano's Yawning Aardvark - WEB115 - FizzBuzz 1</title>
+<title>FizzBuzz 1</title>
 <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
-  
+
+<!-- Header include -->
 <div data-include="components/header.html"></div>
 
 <main>
 <h2>FizzBuzz 1</h2>
 
+<p>
+This page demonstrates a classic FizzBuzz-style program using JavaScript.
+</p>
+
+<!-- JavaScript will output the list here -->
 <div id="output"></div>
-  
-<!-- Greeting (this gets replaced by JS) -->
-<h3 id="greeting">Welcome to Paws &amp; Polish Grooming!</h3>
-
-<!-- Form -->
-<form id="name_form">
-<p>
-<label for="first_name">First Name:</label><br>
-<input type="text" id="first_name" placeholder="Enter your first name">
-</p>
-
-<p>
-<label for="middle_initial">Middle Initial (optional):</label><br>
-<input type="text" id="middle_initial" placeholder="M" maxlength="1">
-</p>
-
-<p>
-<label for="last_name">Last Name:</label><br>
-<input type="text" id="last_name" placeholder="Enter your last name">
-</p>
-
-<p>
-<button type="submit">Submit</button>
-</p>
-</form>
-
-<!-- Output area -->
-<section aria-label="FizzBuzz output">
-<ul id="output"></ul>
-</section>
 </main>
 
+<!-- Footer include -->
 <div data-include="components/footer.html"></div>
 
-<script>
-// Helpers
-function isBlank(value) {
-return !value || value.trim() === "";
-}
-
-function safeTrim(value) {
-return (value || "").trim();
-}
-
-function setOutputMessage(msg) {
-const output = document.getElementById("output");
-output.innerHTML = "";
-const li = document.createElement("li");
-li.textContent = msg;
-output.appendChild(li);
-}
-
-// Main behavior
-document.getElementById("name_form").addEventListener("submit", function (event) {
-event.preventDefault();
-
-const brandName = "Paws & Polish Grooming";
-const word1 = "Glazed";
-const word2 = "Glory";
-
-const first = safeTrim(document.getElementById("first_name").value);
-const middle = safeTrim(document.getElementById("middle_initial").value);
-const last = safeTrim(document.getElementById("last_name").value);
-
-// Middle initial: optional, max 1 char. If user pasted more, keep only first char.
-let mi = "";
-if (!isBlank(middle)) {
-mi = middle.substring(0, 1).toUpperCase();
-}
-
-// If first name is missing, handle gracefully
-const displayFirst = isBlank(first) ? "friend" : first;
-
-// Build name with optional middle initial (with period only if present)
-let fullName = displayFirst;
-if (!isBlank(mi)) {
-fullName += " " + mi + ".";
-}
-if (!isBlank(last)) {
-fullName += " " + last;
-}
-
-// Update greeting
-const greetingEl = document.getElementById("greeting");
-greetingEl.textContent = `Welcome to ${brandName}, ${fullName}!`;
-
-// Prompt for loop limit (use first name dynamically)
-let limitRaw = prompt(`How high do you want to count, ${displayFirst}?`);
-
-// Validate limit input
-if (limitRaw === null) {
-// user hit cancel
-setOutputMessage("No number entered. Please submit again and enter a number in the prompt.");
-return;
-}
-
-limitRaw = limitRaw.trim();
-const limit = Number(limitRaw);
-
-if (isBlank(limitRaw) || Number.isNaN(limit) || !Number.isFinite(limit) || limit < 1) {
-setOutputMessage("Please enter a valid number (1 or higher). Submit again and try the prompt again.");
-return;
-}
-
-// Output lines 1..limit inclusive
-const output = document.getElementById("output");
-output.innerHTML = "";
-
-for (let i = 1; i <= limit; i++) {
-const li = document.createElement("li");
-const parity = (i % 2 === 0) ? "even" : "odd";
-li.textContent = `${i}) ${word1} ${word2} - the number is ${parity}`;
-output.appendChild(li);
-}
-});
-</script>
-
-<!-- Required validation script -->
-<script src="https://lint.page/kit/880bd5.js" crossorigin="anonymous"></script>
+<!-- Scripts -->
 <script src="scripts/HTMLInclude.js"></script>
 <script src="scripts/fizzbuzz1.js"></script>
+
 </body>
 </html>
