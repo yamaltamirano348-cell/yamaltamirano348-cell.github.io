@@ -61,7 +61,7 @@ message = WORD_DEFAULT;
 }
 
 // Include the number in each line
-outputHTML += `<li>${i}. ${message}</li>`;
+outputHTML += `<li>${message}</li>`;
 }
 
 outputHTML += "</ol>";
