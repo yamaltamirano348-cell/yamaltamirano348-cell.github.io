@@ -32,16 +32,23 @@ border-top: 2px solid #b8c9c4;
 margin-top: 24px;
 }
 
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;          /* clean spacing between links */
+    padding: 10px 0;
+}
+
 nav a {
-  text-decoration: none;
-  font-weight: 700;
-  margin-right: 25px;   /* adds spacing between links */
-  display: inline-block;
-  color: #1f1f1f;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 14px;  /* adds space INSIDE each link */
+    display: inline-block;
+    color: #1f1f1f;
 }
 
 nav a:hover {
-text-decoration: underline;
+    text-decoration: underline;
 }
 
 img {
