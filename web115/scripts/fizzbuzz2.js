@@ -62,7 +62,7 @@ for (let i = START; i <= END; i++) {
     message = WORD_DEFAULT;
   }
 
-  outputHTML += `<li>${i}. ${message}</li>`;
+  outputHTML += `<li>${message}</li>`;
 }
 
 outputHTML += "</ol>";
