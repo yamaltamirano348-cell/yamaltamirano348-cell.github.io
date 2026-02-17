@@ -61,7 +61,7 @@ for (let i = START; i <= END; i++) {
   // If nothing matched, use default
   let message = (messageParts.length > 0) ? messageParts.join(" ") : WORD_DEFAULT;
 
-  outputHTML += `<li>${i}. ${message}</li>`;
+  outputHTML += `<li>${message}</li>`;
 }
 
 outputHTML += "</ol>";
