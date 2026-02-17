@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FizzBuzz 4</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+  <!-- Header include -->
+  <div data-include="components/header.html"></div>
+
+  <main>
+    <h2>FizzBuzz 4</h2>
+
+    <p>
+      Fill in your name, choose 3 divisors and 3 words (one word per field), then click
+      <strong>Generate</strong>. If a number is divisible by multiple divisors, you will see
+      multiple words.
+    </p>
+
+    <form id="fbForm">
+      <fieldset>
+        <legend>Your Name</legend>
+
+        <label for="firstName">First name:</label>
+        <input type="text" id="firstName" name="firstName" required />
+
+        <label for="middleInitial">Middle initial (optional):</label>
+        <input type="text" id="middleInitial" name="middleInitial" maxlength="1" />
+
+        <label for="lastName">Last name:</label>
+        <input type="text" id="lastName" name="lastName" required />
+      </fieldset>
+
+      <fieldset>
+        <legend>Settings</legend>
+
+        <label for="total">Total (1 to total):</label>
+        <input type="number" id="total" name="total" value="125" min="1" required />
+
+        <p style="margin-top: 12px;">
+          <strong>Rules:</strong> Enter a divisor and a single word. (No spaces in the word fields.)
+        </p>
+
+        <label for="div1">Divisor 1:</label>
+        <input type="number" id="div1" name="div1" value="3" min="1" required />
+
+        <label for="word1">Word 1:</label>
+        <input type="text" id="word1" name="word1" value="Exploration" required />
+
+        <label for="div2">Divisor 2:</label>
+        <input type="number" id="div2" name="div2" value="5" min="1" required />
+
+        <label for="word2">Word 2:</label>
+        <input type="text" id="word2" name="word2" value="Level-Up" required />
+
+        <label for="div3">Divisor 3:</label>
+        <input type="number" id="div3" name="div3" value="7" min="1" required />
+
+        <label for="word3">Word 3:</label>
+        <input type="text" id="word3" name="word3" value="BANG!" required />
+
+        <label for="defaultWord">Default (not divisible):</label>
+        <input type="text" id="defaultWord" name="defaultWord" value="" />
+        <small>Leave this blank (required by the assignment).</small>
+      </fieldset>
+
+      <p>
+        <button type="submit">Generate</button>
+        <button type="button" id="clearBtn">Clear Output</button>
+      </p>
+    </form>
+
+    <div id="output"></div>
+  </main>
+
+  <!-- Footer include -->
+  <div data-include="components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="scripts/HTMLInclude.js"></script>
+  <script src="scripts/fizzbuzz4.js"></script>
+</body>
+</html>
