@@ -112,10 +112,10 @@ function generateFizzBuzz() {
     // Match the example style: "15. Exploration, Level-Up"
     // If blank, show just "15."
     if (text === "") {
-      html += `<li>${i}.</li>`;
-    } else {
-      html += `<li>${i}. ${text}</li>`;
-    }
+  html += `<li></li>`;          // blank line, but still numbered by <ol>
+} else {
+  html += `<li>${text}</li>`;   // <ol> provides the number
+}
   }
 
   html += `</ol>`;
