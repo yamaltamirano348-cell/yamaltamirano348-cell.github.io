@@ -32,24 +32,37 @@ border-top: 2px solid #b8c9c4;
 margin-top: 24px;
 }
 
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;          /* clean spacing between links */
-    padding: 10px 0;
+/* ===== HEADER NAV STYLING ===== */
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* center links */
+  align-items: center;
+  gap: 0;                    /* remove big spacing */
+  padding: 8px 0;
 }
 
-nav a {
-    text-decoration: none;
-    font-weight: 700;
-    padding: 8px 14px;  /* adds space INSIDE each link */
-    display: inline-block;
-    color: #1f1f1f;
+/* Links */
+header nav a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 14px;           /* space around text */
+  display: inline-block;
+  line-height: 1.8;
+  color: inherit;            /* keeps your current color */
 }
 
-nav a:hover {
-    text-decoration: underline;
+/* Divider line between links */
+header nav a:not(:last-child) {
+  border-right: 1px solid rgba(0,0,0,0.25);
 }
+
+/* Hover */
+header nav a:hover {
+  text-decoration: underline;
+}
+
 
 img {
 max-width: 300px;
