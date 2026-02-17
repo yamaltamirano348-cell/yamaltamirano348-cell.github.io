@@ -70,6 +70,26 @@ height: auto;
 border-radius: 10px;
 }
 
+.site-logo {
+  float: left;
+  width: 60px;
+  height: auto;
+  margin-right: 16px;
+  margin-top: 4px;
+}
+
+.logo-link {
+  display: block;
+  float: left;
+}
+
+/* clears the float so the header contains the logo properly */
+header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* =========================BRAND PAGE ONLY========================= */
 
 .brand-page main {
