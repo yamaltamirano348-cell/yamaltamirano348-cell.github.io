@@ -1,178 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction Form</title>
-  <link rel="stylesheet" href="styles/styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction Form</title>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.name-group {
+  display: flex;
+  gap: 15px;
+}
+
+.name-group div {
+  flex: 1;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#output {
+  background: white;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+</style>
+
 </head>
-
 <body>
-  <div data-include="components/header.html"></div>
 
-  <main>
-    <h2>Introduction Form</h2>
+<h1>Introduction Form</h1>
 
-    <form id="introForm">
-      <fieldset>
-        <legend>About You</legend>
+<form id="introForm">
 
-        <label for="personal">Personal Background:</label><br />
-        <textarea id="personal" required rows="3">I was born in New Jersey and moved to NC when I was six years old. I have an older and younger brother, so I am the middle child. I have 5 pets.</textarea>
-        <br /><br />
+<div class="section">
+  <div class="name-group">
 
-        <label for="professional">Professional Background:</label><br />
-        <textarea id="professional" required rows="3">I have not had a professional job yet, I've only worked part-time jobs.</textarea>
-        <br /><br />
+    <div>
+      <label for="firstname">First Name *</label>
+      <input type="text" id="firstname" value="Yamilet" required>
+    </div>
 
-        <label for="academic">Academic Background:</label><br />
-        <textarea id="academic" required rows="3">Majoring in IT focusing on app development and data analytics (AAS)</textarea>
-      </fieldset>
+    <div>
+      <label for="middle">Middle Initial</label>
+      <input type="text" id="middle" value="A." maxlength="2">
+    </div>
 
-      <br />
+    <div>
+      <label for="lastname">Last Name *</label>
+      <input type="text" id="lastname" value="Altamirano" required>
+    </div>
 
-      <fieldset>
-        <legend>Current Courses (add/remove)</legend>
+  </div>
+</div>
 
-        <div id="coursesContainer">
-          <label>Course 1:
-            <input type="text" class="course" value="CSC-151" required />
-          </label><br />
-          <label>Course 2:
-            <input type="text" class="course" value="DBA-285" required />
-          </label><br />
-          <label>Course 3:
-            <input type="text" class="course" value="WEB-115" required />
-          </label><br />
-        </div>
+<div class="section">
+  <label for="personal">Personal Background *</label>
+  <textarea id="personal" required>
+I was born in New Jersey and moved to NC when I was six years old. I have an older and younger brother, so I am the middle child. I have 5 pets.
+  </textarea>
+</div>
 
-        <br />
-        <button type="button" id="addCourse">Add Course</button>
-        <button type="button" id="removeCourse">Remove Course</button>
-      </fieldset>
+<div class="section">
+  <label for="professional">Professional Background *</label>
+  <textarea id="professional" required>
+I have not had a professional job yet, I've only worked part-time jobs.
+  </textarea>
+</div>
 
-      <br />
+<div class="section">
+  <label for="academic">Academic Background *</label>
+  <textarea id="academic" required>
+Majoring in IT focusing on app development and data analytics (AAS)
+  </textarea>
+</div>
 
-      <fieldset>
-        <legend>Accounts</legend>
+<div class="section">
+  <label>Current Courses (one per line)</label>
+  <textarea id="courses">
+CSC-151
+DBA-285
+WEB-115
+  </textarea>
+</div>
 
-        <label for="github">GitHub username:</label>
-        <input id="github" type="text" value="yamaltamirano348-cell" required />
-        <br /><br />
+<button type="submit">Submit</button>
 
-        <label for="freecodecamp">freeCodeCamp username:</label>
-        <input id="freecodecamp" type="text" value="yaltamirano" required />
-        <br /><br />
+</form>
 
-        <label for="codecademy">Codecademy username:</label>
-        <input id="codecademy" type="text" value="yaltamirano" required />
-        <br /><br />
+<div id="output"></div>
 
-        <label for="jsfiddle">JSFiddle username:</label>
-        <input id="jsfiddle" type="text" value="yaltamirano" required />
-      </fieldset>
+<script>
+document.getElementById("introForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+  const firstName = document.getElementById("firstname").value;
+  const middle = document.getElementById("middle").value;
+  const lastName = document.getElementById("lastname").value;
 
-    <hr />
+  const personal = document.getElementById("personal").value;
+  const professional = document.getElementById("professional").value;
+  const academic = document.getElementById("academic").value;
+  const courses = document.getElementById("courses").value.split("\n");
 
-    <section>
-      <h2>Your Introduction Output</h2>
-      <div id="output"></div>
-    </section>
-  </main>
-
-  <div data-include="components/footer.html"></div>
-  <script src="scripts/HTMLInclude.js"></script>
-
-  <script>
-    const form = document.getElementById("introForm");
-    const output = document.getElementById("output");
-
-    const coursesContainer = document.getElementById("coursesContainer");
-    const addBtn = document.getElementById("addCourse");
-    const removeBtn = document.getElementById("removeCourse");
-
-    function courseCount() {
-      return coursesContainer.querySelectorAll("input.course").length;
+  let courseList = "<ul>";
+  courses.forEach(function(course) {
+    if(course.trim() !== "") {
+      courseList += "<li>" + course.trim() + "</li>";
     }
+  });
+  courseList += "</ul>";
 
-    addBtn.addEventListener("click", () => {
-      const n = courseCount() + 1;
+  document.getElementById("output").innerHTML = `
+    <h2>${firstName} ${middle ? middle + " " : ""}${lastName}</h2>
+    <p><strong>Personal Background:</strong> ${personal}</p>
+    <p><strong>Professional Background:</strong> ${professional}</p>
+    <p><strong>Academic Background:</strong> ${academic}</p>
+    <p><strong>Current Courses:</strong></p>
+    ${courseList}
+  `;
+});
+</script>
 
-      const label = document.createElement("label");
-      label.innerHTML = `Course ${n}: <input type="text" class="course" required />`;
-
-      coursesContainer.appendChild(label);
-      coursesContainer.appendChild(document.createElement("br"));
-    });
-
-    removeBtn.addEventListener("click", () => {
-      const inputs = coursesContainer.querySelectorAll("input.course");
-      if (inputs.length <= 1) return; // keep at least 1 course
-
-      // remove last <br> and last label
-      const brs = coursesContainer.querySelectorAll("br");
-      if (brs.length > 0) brs[brs.length - 1].remove();
-      inputs[inputs.length - 1].parentElement.remove();
-    });
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      // HTML validation check (so required fields actually enforce)
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      const personal = document.getElementById("personal").value.trim();
-      const professional = document.getElementById("professional").value.trim();
-      const academic = document.getElementById("academic").value.trim();
-
-      const github = document.getElementById("github").value.trim();
-      const freecodecamp = document.getElementById("freecodecamp").value.trim();
-      const codecademy = document.getElementById("codecademy").value.trim();
-      const jsfiddle = document.getElementById("jsfiddle").value.trim();
-
-      const courses = Array.from(document.querySelectorAll("input.course"))
-        .map(c => c.value.trim())
-        .filter(c => c !== "");
-
-      // Build output like your intro page (nested bullets)
-      let html = `
-        <h3>Personal Background</h3>
-        <p>${personal}</p>
-
-        <h3>Professional Background</h3>
-        <p>${professional}</p>
-
-        <h3>Academic Background</h3>
-        <p>${academic}</p>
-
-        <h3>Current Courses</h3>
-        <ul>
-          ${courses.map(c => `<li>${c}</li>`).join("")}
-        </ul>
-
-        <h3>Online Profiles</h3>
-        <ul>
-          <li>GitHub: ${github}</li>
-          <li>freeCodeCamp: ${freecodecamp}</li>
-          <li>Codecademy: ${codecademy}</li>
-          <li>JSFiddle: ${jsfiddle}</li>
-        </ul>
-      `;
-
-      output.innerHTML = html;
-    });
-
-    // Optional: auto-generate output on first load so it matches intro page immediately
-    window.addEventListener("load", () => {
-      form.dispatchEvent(new Event("submit"));
-    });
-  </script>
 </body>
 </html>
