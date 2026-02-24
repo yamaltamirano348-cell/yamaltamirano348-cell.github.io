@@ -5,130 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction Form</title>
 
+<link rel="stylesheet" href="styles/styles.css">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f4f4;
-  padding: 30px;
+/* Embedded styling for this page only */
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-h1 {
-  text-align: center;
+.intro-form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-form {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  max-width: 800px;
-  margin: auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.intro-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.section {
-  margin-bottom: 20px;
+.name-row {
+    display: flex;
+    gap: 15px;
+}
+
+.name-row div {
+    flex: 1;
 }
 
 label {
-  font-weight: bold;
+    font-weight: bold;
+    display: block;
+    margin-top: 12px;
 }
 
 input, textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-family: inherit;
 }
 
-.name-group {
-  display: flex;
-  gap: 15px;
-}
-
-.name-group div {
-  flex: 1;
+textarea {
+    min-height: 80px;
 }
 
 button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #333;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+    margin-top: 20px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #2F2F2F;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #444;
 }
 
 #output {
-  background: white;
-  margin-top: 30px;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: 30px;
+    padding: 20px;
+    background: #FAFAF7;
+    border-radius: 8px;
 }
 </style>
 
 </head>
+
 <body>
 
-<h1>Introduction Form</h1>
+<div data-include="components/header.html"></div>
+
+<main>
+
+<div class="intro-form">
+<h2>Introduction Form</h2>
+<p>Fields marked * are required.</p>
 
 <form id="introForm">
 
-<div class="section">
-  <div class="name-group">
-
+<div class="name-row">
     <div>
-      <label for="firstname">First Name *</label>
-      <input type="text" id="firstname" value="Yamilet" required>
+        <label for="firstname">First Name *</label>
+        <input type="text" id="firstname" required value="Yamilet">
     </div>
 
     <div>
-      <label for="middle">Middle Initial</label>
-      <input type="text" id="middle" value="A." maxlength="2">
+        <label for="middle">Middle Initial</label>
+        <input type="text" id="middle" maxlength="1" value="A">
     </div>
 
     <div>
-      <label for="lastname">Last Name *</label>
-      <input type="text" id="lastname" value="Altamirano" required>
+        <label for="lastname">Last Name *</label>
+        <input type="text" id="lastname" required value="Altamirano">
     </div>
-
-  </div>
 </div>
 
-<div class="section">
-  <label for="personal">Personal Background *</label>
-  <textarea id="personal" required>
-I was born in New Jersey and moved to NC when I was six years old. I have an older and younger brother, so I am the middle child. I have 5 pets.
-  </textarea>
-</div>
+<label for="personal">Personal Background *</label>
+<textarea id="personal" required>I was born in New Jersey and moved to NC when I was six years old. I have an older and younger brother, so I am the middle child. I have 5 pets.</textarea>
 
-<div class="section">
-  <label for="professional">Professional Background *</label>
-  <textarea id="professional" required>
-I have not had a professional job yet, I've only worked part-time jobs.
-  </textarea>
-</div>
+<label for="professional">Professional Background *</label>
+<textarea id="professional" required>I have not had a professional job yet, I’ve only worked part-time jobs.</textarea>
 
-<div class="section">
-  <label for="academic">Academic Background *</label>
-  <textarea id="academic" required>
-Majoring in IT focusing on app development and data analytics (AAS)
-  </textarea>
-</div>
+<label for="academic">Academic Background *</label>
+<textarea id="academic" required>Majoring in IT focusing on app development and data analytics (AAS)</textarea>
 
-<div class="section">
-  <label>Current Courses (one per line)</label>
-  <textarea id="courses">
-CSC-151
+<label for="courses">Current Courses (one per line)</label>
+<textarea id="courses">CSC-151
 DBA-285
-WEB-115
-  </textarea>
-</div>
+WEB-115</textarea>
 
 <button type="submit">Submit</button>
 
@@ -136,35 +130,42 @@ WEB-115
 
 <div id="output"></div>
 
+</div>
+
+</main>
+
+<div data-include="components/footer.html"></div>
+
+<script src="scripts/HTMLInclude.js"></script>
+
 <script>
-document.getElementById("introForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+document.getElementById("introForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-  const firstName = document.getElementById("firstname").value;
-  const middle = document.getElementById("middle").value;
-  const lastName = document.getElementById("lastname").value;
+    const first = document.getElementById("firstname").value;
+    const middle = document.getElementById("middle").value;
+    const last = document.getElementById("lastname").value;
+    const personal = document.getElementById("personal").value;
+    const professional = document.getElementById("professional").value;
+    const academic = document.getElementById("academic").value;
+    const courses = document.getElementById("courses").value;
 
-  const personal = document.getElementById("personal").value;
-  const professional = document.getElementById("professional").value;
-  const academic = document.getElementById("academic").value;
-  const courses = document.getElementById("courses").value.split("\n");
+    const courseArray = courses.split("\n").filter(course => course.trim() !== "");
 
-  let courseList = "<ul>";
-  courses.forEach(function(course) {
-    if(course.trim() !== "") {
-      courseList += "<li>" + course.trim() + "</li>";
-    }
-  });
-  courseList += "</ul>";
+    let courseList = "<ul>";
+    courseArray.forEach(course => {
+        courseList += `<li>${course}</li>`;
+    });
+    courseList += "</ul>";
 
-  document.getElementById("output").innerHTML = `
-    <h2>${firstName} ${middle ? middle + " " : ""}${lastName}</h2>
-    <p><strong>Personal Background:</strong> ${personal}</p>
-    <p><strong>Professional Background:</strong> ${professional}</p>
-    <p><strong>Academic Background:</strong> ${academic}</p>
-    <p><strong>Current Courses:</strong></p>
-    ${courseList}
-  `;
+    document.getElementById("output").innerHTML = `
+        <h2>${first} ${middle ? middle + "." : ""} ${last}</h2>
+        <p><strong>Personal Background:</strong> ${personal}</p>
+        <p><strong>Professional Background:</strong> ${professional}</p>
+        <p><strong>Academic Background:</strong> ${academic}</p>
+        <p><strong>Current Courses:</strong></p>
+        ${courseList}
+    `;
 });
 </script>
 
