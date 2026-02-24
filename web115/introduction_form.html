@@ -1,1 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction Form</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
 
+<body>
+  <div data-include="components/header.html"></div>
+
+  <main>
+    <h2>Introduction Form</h2>
+
+    <form id="introForm">
+      <fieldset>
+        <legend>About You</legend>
+
+        <label for="personal">Personal Background:</label><br />
+        <textarea id="personal" required rows="3">I was born in New Jersey and moved to NC when I was six years old. I have an older and younger brother, so I am the middle child. I have 5 pets.</textarea>
+        <br /><br />
+
+        <label for="professional">Professional Background:</label><br />
+        <textarea id="professional" required rows="3">I have not had a professional job yet, I've only worked part-time jobs.</textarea>
+        <br /><br />
+
+        <label for="academic">Academic Background:</label><br />
+        <textarea id="academic" required rows="3">Majoring in IT focusing on app development and data analytics (AAS)</textarea>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>Current Courses (add/remove)</legend>
+
+        <div id="coursesContainer">
+          <label>Course 1:
+            <input type="text" class="course" value="CSC-151" required />
+          </label><br />
+          <label>Course 2:
+            <input type="text" class="course" value="DBA-285" required />
+          </label><br />
+          <label>Course 3:
+            <input type="text" class="course" value="WEB-115" required />
+          </label><br />
+        </div>
+
+        <br />
+        <button type="button" id="addCourse">Add Course</button>
+        <button type="button" id="removeCourse">Remove Course</button>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>Accounts</legend>
+
+        <label for="github">GitHub username:</label>
+        <input id="github" type="text" value="yamaltamirano348-cell" required />
+        <br /><br />
+
+        <label for="freecodecamp">freeCodeCamp username:</label>
+        <input id="freecodecamp" type="text" value="yaltamirano" required />
+        <br /><br />
+
+        <label for="codecademy">Codecademy username:</label>
+        <input id="codecademy" type="text" value="yaltamirano" required />
+        <br /><br />
+
+        <label for="jsfiddle">JSFiddle username:</label>
+        <input id="jsfiddle" type="text" value="yaltamirano" required />
+      </fieldset>
+
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <hr />
+
+    <section>
+      <h2>Your Introduction Output</h2>
+      <div id="output"></div>
+    </section>
+  </main>
+
+  <div data-include="components/footer.html"></div>
+  <script src="scripts/HTMLInclude.js"></script>
+
+  <script>
+    const form = document.getElementById("introForm");
+    const output = document.getElementById("output");
+
+    const coursesContainer = document.getElementById("coursesContainer");
+    const addBtn = document.getElementById("addCourse");
+    const removeBtn = document.getElementById("removeCourse");
+
+    function courseCount() {
+      return coursesContainer.querySelectorAll("input.course").length;
+    }
+
+    addBtn.addEventListener("click", () => {
+      const n = courseCount() + 1;
+
+      const label = document.createElement("label");
+      label.innerHTML = `Course ${n}: <input type="text" class="course" required />`;
+
+      coursesContainer.appendChild(label);
+      coursesContainer.appendChild(document.createElement("br"));
+    });
+
+    removeBtn.addEventListener("click", () => {
+      const inputs = coursesContainer.querySelectorAll("input.course");
+      if (inputs.length <= 1) return; // keep at least 1 course
+
+      // remove last <br> and last label
+      const brs = coursesContainer.querySelectorAll("br");
+      if (brs.length > 0) brs[brs.length - 1].remove();
+      inputs[inputs.length - 1].parentElement.remove();
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // HTML validation check (so required fields actually enforce)
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const personal = document.getElementById("personal").value.trim();
+      const professional = document.getElementById("professional").value.trim();
+      const academic = document.getElementById("academic").value.trim();
+
+      const github = document.getElementById("github").value.trim();
+      const freecodecamp = document.getElementById("freecodecamp").value.trim();
+      const codecademy = document.getElementById("codecademy").value.trim();
+      const jsfiddle = document.getElementById("jsfiddle").value.trim();
+
+      const courses = Array.from(document.querySelectorAll("input.course"))
+        .map(c => c.value.trim())
+        .filter(c => c !== "");
+
+      // Build output like your intro page (nested bullets)
+      let html = `
+        <h3>Personal Background</h3>
+        <p>${personal}</p>
+
+        <h3>Professional Background</h3>
+        <p>${professional}</p>
+
+        <h3>Academic Background</h3>
+        <p>${academic}</p>
+
+        <h3>Current Courses</h3>
+        <ul>
+          ${courses.map(c => `<li>${c}</li>`).join("")}
+        </ul>
+
+        <h3>Online Profiles</h3>
+        <ul>
+          <li>GitHub: ${github}</li>
+          <li>freeCodeCamp: ${freecodecamp}</li>
+          <li>Codecademy: ${codecademy}</li>
+          <li>JSFiddle: ${jsfiddle}</li>
+        </ul>
+      `;
+
+      output.innerHTML = html;
+    });
+
+    // Optional: auto-generate output on first load so it matches intro page immediately
+    window.addEventListener("load", () => {
+      form.dispatchEvent(new Event("submit"));
+    });
+  </script>
+</body>
+</html>
